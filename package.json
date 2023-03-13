@@ -11,8 +11,8 @@
   "module": "dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./package.json": "./package.json"
   },
