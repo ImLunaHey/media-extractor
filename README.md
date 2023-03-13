@@ -15,15 +15,12 @@ Actually... it's an html file. Yes, have fun saving that in a database and tryin
 `npm install media-extractor`
 
 ```js
-const { resolve } = require("media-extractor");
+import { resolve } from 'media-extractor';
 
-const link =
-  "https://tenor.com/view/holo-spice-and-wolf-anime-cartoon-japanese-gif-9404303";
+const url = await resolveMediaUrl('https://tenor.com/view/holo-spice-and-wolf-anime-cartoon-japanese-gif-9404303');
 
-resolve(link).then(response => {
-  console.log(response);
+console.log(response);
   // https://media1.tenor.com/images/326f7e77b5562ce6c9aa90ed77799017/tenor.gif
-});
 ```
 
 These links can be generated without an http request:
@@ -37,7 +34,6 @@ These links **cannot** be generated without an http request:
 
 
 ### Contributing
-Please make sure to add tests for each new endpoint to make 
-sure they're supported.
+Please make sure to add tests for each new endpoint to make sure they're supported.
 
-You can run the tests with `npm t`
+You can run the tests with `npm run test`
