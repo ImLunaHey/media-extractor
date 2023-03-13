@@ -8,6 +8,17 @@
   "description": "",
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules  --no-warnings\" npx jest",

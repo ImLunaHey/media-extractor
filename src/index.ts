@@ -20,12 +20,11 @@ const isTenorLink = (url: string) => {
 };
 
 const extractGify = (url: string) => {
-	const last = url.split('-').pop();
-	if (!last) {
-		return url;
+	const mediaId = url.split('-').pop()?.replace(/\/*/, '');
+	if (!mediaId) {
+		return null;
 	}
 
-	const mediaId = last.replace(/\/*/, '');
 	return `https://media.giphy.com/media/${mediaId}/giphy.gif`;
 };
 
@@ -40,10 +39,18 @@ const extractTenor = async (url: string) => {
 	return gif.attributes.src;
 };
 
+const removeUrlParams = (url: string) => {
+	try {
+		const _url = new URL(url);
+		_url.search = '';
+		return _url.toString();
+	} catch {
+		return url;
+	}
+};
+
 export const resolveMediaUrl = async (url: string) => {
-	const _url = new URL(url);
-	_url.search = '';
-	const cleanUrl = _url.toString();
+	const cleanUrl = removeUrlParams(url);
 
 	// If it's a gify link, extract the media id and return the gify url
 	if (isGifyLink(cleanUrl)) {
